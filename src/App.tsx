@@ -1,22 +1,22 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import Navbar from "./layout/header-footer/Navbar";
-import {BrowserRouter} from "react-router-dom";
+import Navbar from './layout/header-footer/Navbar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Carousel from "./layout/homepage/Component/Carousel";
-import CarouselItem from "./layout/homepage/Component/CarouselItem";
-import HomePage from "./layout/homepage/HomePage";
+import HomePage from './layout/homepage/HomePage';
+
 
 function App() {
-    const [tuKhoaTimKiem, setTuKhoaTimKiem] =useState("");
+    const [tuKhoaTimKiem, setTuKhoaTimKiem] = useState('');
+
     return (
-        <div>
-            <BrowserRouter>
-                <Navbar/>
-            <HomePage tuKhoaTimKiem={tuKhoaTimKiem}/>
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            <Navbar tuKhoaTimKiem={tuKhoaTimKiem} setTuKhoaTimKiem={setTuKhoaTimKiem} />
+            <Routes>
+                <Route path="/" element={<HomePage tuKhoaTimKiem={tuKhoaTimKiem} />} />
+                <Route path="/movies/:idMovie" element={<HomePage tuKhoaTimKiem={tuKhoaTimKiem} />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
